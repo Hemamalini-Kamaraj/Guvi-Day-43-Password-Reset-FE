@@ -17,22 +17,20 @@ function ResetPassword() {
 
     let users = await baseUrl.get("/users");
     users = users.data;
-    let Token = users.find((user) => user.resetToken === resetToken);
-
-      if (Token) {
-        if (password === cPassword) {
-          baseUrl.patch(`/users/reset-password/${resetToken}`, {
-            password: password,
-          });
-          setPassword("");
-          setcPassword("");
-          setResetToken("");
-          alert("Password changed Successfully!");
-        } else {
-          alert("Password not matching");
-        }
+    users = users.find((user) => user.resetToken === resetToken);
+    if (users) {
+      if (password === cPassword) {
+        baseUrl.patch(`/users/reset-password/${resetToken}`, {
+          password: password,
+        });
+        setPassword("");
+        setcPassword("");
+        alert("Password changed Successfully!");
       } else {
-          alert('Reset password link has been expired!')
+        alert("Password not matching");
+      }
+    } else {
+      alert("Reset password link has been expired!");
     }
   };
 
