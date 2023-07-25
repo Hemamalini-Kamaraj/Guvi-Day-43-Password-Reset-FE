@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import baseUrl from "../api/api";
 
 function ForgotPassword() {
   let [email, setEmail] = useState("");
-  const navigate = useNavigate();
 
   const handleForgotPassword = async (e) => {
     e.preventDefault();
@@ -20,7 +19,6 @@ function ForgotPassword() {
         alert(
           "Mail has been sent to reset the password.Kindly check your email!"
         );
-        // navigate("/reset-password");
       } catch (error) {
         console.error(error);
       }

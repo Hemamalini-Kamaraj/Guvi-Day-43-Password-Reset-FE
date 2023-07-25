@@ -10,7 +10,7 @@ function ResetPassword() {
   let { id } = useParams();
   useEffect(() => {
     setResetToken(id);
-  });
+  }, [id]);
 
   const handleReset = (e) => {
     e.preventDefault();
@@ -22,7 +22,6 @@ function ResetPassword() {
       setPassword("");
       setcPassword("");
       alert("Password changed Successfully!");
-      setResetToken("");
     } else {
       alert("Password not matching");
     }
