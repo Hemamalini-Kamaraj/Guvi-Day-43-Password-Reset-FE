@@ -21,6 +21,7 @@ function ResetPassword() {
       });
       setPassword("");
       setcPassword("");
+      setResetToken("");
       alert("Password changed Successfully!");
     } else {
       alert("Password not matching");
